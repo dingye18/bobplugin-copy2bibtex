@@ -116,4 +116,6 @@ export const supportLanguageList = [
   ["zu", "zu"],
 ] as const;
 
+export type Language = typeof supportLanguageList[number][0];
+
 export const langMap = new Map(supportLanguageList.map(([key, value]) => [key, value]));

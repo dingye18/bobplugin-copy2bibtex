@@ -1,61 +1,30 @@
 {
-  "name": "bob-plugin-copy2bibtex",
-  "version": "0.0.1",
-  "description": "Convert the input doi or title to bibtex format.",
-  "homepage": "https://github.com/dingye18/bob-plugin-copy2bibtex",
-  "repository": "https://github.com/dingye18/bob-plugin-copy2bibtex.git",
-  "author": "dingye18",
-  "license": "MIT",
-  "main": "src/main.js",
+  "name": "bob-plugin-openai-polisher",
+  "version": "1.0.0",
+  "description": "使用 OpenAI API 给文本进行润色和语法纠错的 Bob 插件！完美代替 Grammarly！",
+  "type": "module",
+  "license": "CC BY-NC-SA 4.0",
+  "main": "dist/main.js",
   "keywords": [
-    "bobplugin",
-    "translate"
+    "bob-plugin",
+    "openai",
+    "polisher"
   ],
+  "homepage": "https://github.com/openai-translator/bob-plugin-openai-polisher",
   "scripts": {
-    "clear": "rimraf ./dist && rimraf ./release",
-    "initInfo": "node ./scripts/init-info.js",
-    "install": "npm run initInfo",
-    "dev": "cross-env NODE_ENV=development rollup -c rollup.config.js --watch",
-    "build": "npm run clear && npm run initInfo && cross-env NODE_ENV=production rollup -c && node ./scripts/build-zip.js",
-    "type-check": "tsc --noEmit --allowJs",
-    "type-check:watch": "tsc --noEmit --allowJs --watch",
-    "prettier:fix": "prettier --config .prettierrc.js --write .",
-    "eslint": "eslint . -c .eslintrc.js --ext .ts,.tsx,.js",
-    "eslint:fix": "eslint . -c .eslintrc.js --fix --ext .ts,.tsx,.js",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "version": "npm run initInfo && npm run changelog && git add CHANGELOG.md src/info.json"
-  },
-  "dependencies": {
-    "@bob-plug/core": "^0.1.6",
-    "querystring": "^0.2.1"
+    "build": "rollup --config rollup.config.ts --configPlugin typescript"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "@babel/preset-typescript": "^7.15.0",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@types/eslint-plugin-prettier": "^3.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "@typescript-eslint/parser": "^5.2.0",
-    "adm-zip": "^0.5.9",
-    "conventional-changelog-cli": "^2.1.1",
-    "cross-env": "^7.0.3",
-    "esbuild": "^0.13.10",
-    "eslint": "^8.1.0",
-    "eslint-config-airbnb-typescript": "^14.0.1",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-prettier": "^4.0.0",
-    "fs-extra": "^10.0.0",
-    "prettier": "^2.4.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.58.3",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-esbuild": "^4.6.0",
-    "rollup-plugin-polyfill-node": "^0.7.0",
-    "typescript": "^4.4.4"
-  }
+    "@bob-translate/types": "1.0.2",
+    "@rollup/plugin-terser": "0.4.4",
+    "@rollup/plugin-typescript": "11.1.6",
+    "rollup": "4.20.0",
+    "rollup-plugin-copy": "3.5.0",
+    "tslib": "2.6.3",
+    "typescript": "5.5.4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }

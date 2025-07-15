@@ -1,0 +1,164 @@
+{
+  "identifier": "xyz.dingye18.copy2bibtex",
+  "version": "0.0.1",
+  "category": "translate",
+  "name": "Copy2Bibtex",
+  "summary": "Convert DOI or title to BibTeX format.",
+  "icon": "",
+  "author": "dingye18 <97.ye.ding@gmail.com>",
+  "homepage": "https://github.com/dingye18/bobplugin-copy2bibtex",
+  "appcast": "https://raw.githubusercontent.com/dingye18/bobplugin-copy2bibtex/main/appcast.json",
+  "minBobVersion": "1.8.0",
+  "options": [
+    {
+      "identifier": "apiUrl",
+      "type": "text",
+      "title": "API URL",
+      "defaultValue": "https://api.openai.com",
+      "desc": "可选项。如果您的网络环境需要代理才能访问 OpenAI API, 可在这里修改为反代 API 的地址",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "https://api.openai.com"
+      }
+    },
+    {
+      "identifier": "deploymentName",
+      "type": "text",
+      "title": "Dep. Name",
+      "desc": "可选项。此值为在部署 Azure 模型时为部署选择的自定义名称，可在 Azure 门户中的 “资源管理”＞“部署” 下查看",
+      "textConfig": {
+        "type": "visible"
+      }
+    },
+    {
+      "identifier": "apiVersion",
+      "type": "text",
+      "title": "API Version",
+      "defaultValue": "2023-03-15-preview",
+      "desc": "可选项。此值为在使用 Azure 模型时采用的 Chat completions API 版本，不支持 2023-03-15-preview 之前的版本",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "2023-03-15-preview"
+      }
+    },
+    {
+      "identifier": "apiKeys",
+      "type": "text",
+      "title": "API KEY",
+      "desc": "必填项。可以用英文逗号分割多个 API KEY 以实现额度加倍及负载均衡",
+      "textConfig": {
+        "type": "secure",
+        "height": "40",
+        "placeholderText": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    },
+    {
+      "identifier": "model",
+      "type": "menu",
+      "title": "模型",
+      "defaultValue": "gpt-4.1-nano",
+      "menuValues": [
+        {
+          "title": "Custom",
+          "value": "custom"
+        },
+        {
+          "title": "GPT-4.1",
+          "value": "gpt-4.1"
+        },
+        {
+          "title": "GPT-4.1 mini",
+          "value": "gpt-4.1-mini"
+        },
+        {
+          "title": "GPT-4.1 nano",
+          "value": "gpt-4.1-nano"
+        },
+        {
+          "title": "GPT-4o",
+          "value": "gpt-4o"
+        },
+        {
+          "title": "o4-mini",
+          "value": "o4-mini"
+        }
+      ]
+    },
+    {
+      "identifier": "customModel",
+      "type": "text",
+      "title": "自定义模型",
+      "desc": "可选项。当 Model 选择为 custom 时，此项为必填项。请填写有效的模型名称",
+      "textConfig": {
+        "type": "visible",
+        "placeholderText": "gpt-3.5-turbo"
+      }
+    },
+    {
+      "identifier": "customSystemPrompt",
+      "type": "text",
+      "title": "系统指令",
+      "defaultValue": "Revise the following sentences to make them more clear, concise, and coherent.",
+      "desc": "可选项。自定义 System Prompt，填写则会覆盖默认的 System Prompt。自定义 Prompt可使用以下变量：\n\n`$text` - 需要润色的文本，即翻译窗口输入框内的文本 `$sourceLang` - 原文语言，即翻译窗口输入框内文本的语言，比如「简体中文」\n\n`$targetLang` - 目标语言，可以在翻译窗口中手动选择或自动检测，比如「English」",
+      "textConfig": {
+        "type": "visible",
+        "height": "100",
+        "placeholderText": "Revise the following sentences to make them more clear, concise, and coherent.",
+        "keyWords": [
+          "$text",
+          "$sourceLang",
+          "$targetLang"
+        ]
+      }
+    },
+    {
+      "identifier": "customUserPrompt",
+      "type": "text",
+      "title": "用户指令",
+      "defaultValue": "$text",
+      "desc": "可选项。自定义 User Prompt，填写则会覆盖默认的 User Prompt，默认值为`$text`（即翻译窗口输入框内的文本）\n\n自定义 Prompt 中可以使用与系统指令中相同的变量",
+      "textConfig": {
+        "type": "visible",
+        "height": "100",
+        "placeholderText": "$text",
+        "keyWords": [
+          "$text",
+          "$sourceLang",
+          "$targetLang"
+        ]
+      }
+    },
+    {
+      "identifier": "stream",
+      "type": "menu",
+      "title": "流式输出",
+      "defaultValue": "1",
+      "menuValues": [
+        {
+          "title": "Enable",
+          "value": "1"
+        },
+        {
+          "title": "Disable",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "identifier": "polishingMode",
+      "type": "menu",
+      "title": "润色模式",
+      "defaultValue": "simplicity",
+      "menuValues": [
+        {
+          "title": "简洁（只输出润色后的文本）",
+          "value": "simplicity"
+        },
+        {
+          "title": "详尽（附加解释修改原因）",
+          "value": "detailed"
+        }
+      ]
+    }
+  ]
+}
