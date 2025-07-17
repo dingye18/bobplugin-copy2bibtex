@@ -1,0 +1,90 @@
+import querystring from 'querystring';
+import * as Bob from '@bob-plug/core';
+import { userAgent } from './util';
+import { standardToNoStandard } from './lang';
+
+var CryptoJS = require("crypto-js");
+
+interface QueryOption {
+  to?: Bob.Language;
+  from?: Bob.Language;
+  cache?: string;
+  tld?: string;
+  timeout?: number;
+  iBooksCleanup?: string;
+}
+
+var resultCache = new Bob.CacheResult('translate-result');
+
+/**
+ * @description 翻译
+ * @param {string} text 需要翻译的文字内容
+ * @param {object} [options={}]
+ * @return {object} 一个符合 bob 识别的翻译结果对象
+ */
+async function _translate(text: string, options: QueryOption = {}): Promise<Bob.TranslateResult> {
+  const { from = 'auto', to = 'auto', cache = 'disable', tld = 'com', timeout = 10000, iBooksCleanup = 'disable' } = options;
+  
+  const sourceLanguage = standardToNoStandard(from);
+  const targetLanguage = standardToNoStandard(to);
+
+  const cacheKey = CryptoJS.MD5(`${text}${from}${to}`);
+  if (cache === 'enable') {
+    const _cacheData = resultCache.get(cacheKey);
+    if (_cacheData) return _cacheData;
+  } else {
+    resultCache.clear();
+  }
+
+  const result: Bob.TranslateResult = { from, to, toParagraphs: [] };
+
+  try {
+    // 在此处实现翻译的具体处理逻辑
+    //const doi = "10.1021/acs.jmedchem.6b00264";
+    const doi = text;
+    if (!doi) throw Bob.util.error('api', 'DOI 不能为空');
+    //if (!/^\d{2,4}\.\d{1,9}\/[-._;()/:A-Z0-9]+$/i.test(doi)) {
+    //  throw Bob.util.error('api', 'DOI 格式不正确');
+    //}
+
+    // 查询
+    /*
+    const [err, res] = await Bob.util.asyncTo<Bob.HttpResponse>(
+      Bob.api.$http.get({
+        url: `https://api.crossref.org/works/${doi}/transform/application/x-bibtex`,
+        timeout,
+        header: { 'User-Agent': userAgent },
+      }),
+    );
+    
+    if (res?.response.statusCode !== 200) throw Bob.util.error('api', '接口响应状态错误', err);
+    if (err) throw Bob.util.error('api', '接口网络错误', err);
+    */
+
+    //const html = res?.data;   // 获取 HTML
+  
+    //if (!Bob.util.isString(html)) throw Bob.util.error('api', '接口返回数据类型出错', res);
+    //if (html.indexOf('"result-container"') == -1 ) throw Bob.util.error('api', '接口返回数据不存在', res);
+    
+    //const matchResults = html.match(/"result-container">([\s\S]*)<\/div><div class="links-container"/);  // 提取结果
+    
+    //if (!matchResults) throw Bob.util.error('api', '接口返回数据出错', res);
+    //if(typeof matchResults[1] === "undefined") throw Bob.util.error('api', '接口返回数据异常', res);
+  
+    //const translateResult = matchResults[1].split("\n");  // 最终结果
+
+    result.toParagraphs = [doi];  // 将结果存入 toParagraphs
+//    result.fromParagraphs = [];
+    // result.toDict = { parts: [], phonetics: [] };
+  } catch (error) {
+    
+    throw Bob.util.error('api', '数据解析错误出错lelle', error);
+  }
+
+  if (cache === 'enable') {
+    resultCache.set(cacheKey, result);
+  }
+  return result;
+}
+
+export { _translate };
