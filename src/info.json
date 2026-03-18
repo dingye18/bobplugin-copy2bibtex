@@ -1,51 +1,53 @@
 {
   "identifier": "com.dingye18.bobplugin.copy2bibtex",
   "category": "translate",
-  "version": "0.0.1",
-  "name": "Copy2Bibtex",
-  "summary": "将 DOI 转换为 BibTeX",
+  "version": "0.1.0",
+  "name": "Copy2BibTeX",
+  "summary": "将文献标题或 DOI 转换为 BibTeX",
   "author": "dingye18",
-  "appcast": "https://raw.githubusercontent.com/tingv/bobplugin-google-translate/master/src/appcast.json",
-  "homepage": "https://github.com/tingv/bobplugin-google-translate",
-  "icon": "113",
+  "appcast": "https://raw.githubusercontent.com/dingye18/bobplugin-copy2bibtex/master/src/appcast.json",
+  "homepage": "https://github.com/dingye18/bobplugin-copy2bibtex",
+  "icon": "icon.png",
   "minBobVersion": "0.5.0",
   "options": [
+    {
+      "identifier": "llmProvider",
+      "type": "menu",
+      "title": "LLM 服务商",
+      "defaultValue": "claude",
+      "menuValues": [
+        {
+          "title": "Claude (Anthropic)",
+          "value": "claude"
+        },
+        {
+          "title": "OpenAI (GPT)",
+          "value": "openai"
+        },
+        {
+          "title": "Google (Gemini)",
+          "value": "gemini"
+        }
+      ]
+    },
+    {
+      "identifier": "apiKey",
+      "type": "text",
+      "title": "API Key",
+      "defaultValue": "",
+      "placeholder": "输入所选 LLM 服务商的 API Key（DOI 直接转换无需填写）"
+    },
+    {
+      "identifier": "baseURL",
+      "type": "text",
+      "title": "自定义接口地址",
+      "defaultValue": "",
+      "placeholder": "留空使用默认地址（Claude: api.anthropic.com / OpenAI: api.openai.com / Gemini: generativelanguage.googleapis.com）"
+    },
     {
       "identifier": "cache",
       "type": "menu",
       "title": "缓存",
-      "defaultValue": "disable",
-      "menuValues": [
-        {
-          "title": "开启",
-          "value": "enable"
-        },
-        {
-          "title": "关闭",
-          "value": "disable"
-        }
-      ]
-    },
-    {
-      "identifier": "tld",
-      "type": "menu",
-      "title": "接口域名",
-      "defaultValue": "com",
-      "menuValues": [
-        {
-          "title": "google.com (国际)",
-          "value": "com"
-        },
-        {
-          "title": "google.cn (国内)",
-          "value": "cn"
-        }
-      ]
-    },
-    {
-      "identifier": "iBooksCleanup",
-      "type": "menu",
-      "title": "iBooks 清理",
       "defaultValue": "disable",
       "menuValues": [
         {

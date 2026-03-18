@@ -4,10 +4,10 @@
  */
 
 const config = {
-  pkgName: 'bobplugin-google-translate',
+  pkgName: 'bobplugin-copy2bibtex',
   github:{
-    username: 'tingv',
-    repository: 'bobplugin-google-translate'
+    username: 'dingye18',
+    repository: 'bobplugin-copy2bibtex'
   }
 };
 

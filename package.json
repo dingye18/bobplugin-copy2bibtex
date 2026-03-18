@@ -1,10 +1,10 @@
 {
-  "name": "bobplugin-google-translate",
-  "version": "1.1.0",
-  "description": "Google 翻译插件，无需申请 API 秘钥",
-  "homepage": "https://github.com/tingv/bobplugin-google-translate",
-  "repository": "https://github.com/tingv/bobplugin-google-translate.git",
-  "author": "TingV",
+  "name": "bobplugin-copy2bibtex",
+  "version": "0.1.0",
+  "description": "将文献标题或 DOI 转换为 BibTeX",
+  "homepage": "https://github.com/dingye18/bobplugin-copy2bibtex",
+  "repository": "https://github.com/dingye18/bobplugin-copy2bibtex.git",
+  "author": "dingye18",
   "license": "MIT",
   "main": "src/main.js",
   "keywords": [
