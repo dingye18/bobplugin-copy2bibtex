@@ -4,7 +4,7 @@
     {
       "version": "0.1.0",
       "desc": "https://github.com/dingye18/bobplugin-copy2bibtex/blob/master/CHANGELOG.md",
-      "sha256": "aeb94cfbbf3f1996333e43f0a55ec032d2f1afadaf89ba7fbc88078e3b694f1b",
+      "sha256": "bffc7d9fe266e0a7d164a19cf0c6f3a650f14227cacaa1151237b75493f701a4",
       "url": "https://github.com/dingye18/bobplugin-copy2bibtex/releases/download/v0.1.0/bobplugin-copy2bibtex-v0.1.0.bobplugin",
       "minBobVersion": "0.5.0"
     }
