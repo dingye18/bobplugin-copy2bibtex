@@ -1,6 +1,6 @@
 {
   "name": "bobplugin-copy2bibtex",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "将文献标题或 DOI 转换为 BibTeX",
   "homepage": "https://github.com/dingye18/bobplugin-copy2bibtex",
   "repository": "https://github.com/dingye18/bobplugin-copy2bibtex.git",

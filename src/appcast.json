@@ -2,6 +2,13 @@
   "identifier": "com.dingye18.bobplugin.copy2bibtex",
   "versions": [
     {
+      "version": "0.2.0",
+      "desc": "https://github.com/dingye18/bobplugin-copy2bibtex/blob/master/CHANGELOG.md",
+      "sha256": "3895cbede1ed286791ff81662100851ada0b9a665154af63303c855f71fcf977",
+      "url": "https://github.com/dingye18/bobplugin-copy2bibtex/releases/download/v0.2.0/bobplugin-copy2bibtex-v0.2.0.bobplugin",
+      "minBobVersion": "0.5.0"
+    },
+    {
       "version": "0.1.0",
       "desc": "https://github.com/dingye18/bobplugin-copy2bibtex/blob/master/CHANGELOG.md",
       "sha256": "bffc7d9fe266e0a7d164a19cf0c6f3a650f14227cacaa1151237b75493f701a4",

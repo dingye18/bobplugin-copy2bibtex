@@ -108,9 +108,12 @@ function buildPrompt(title: string): string {
 "${title}"
 
 The paper may be published in a journal, or it may be a preprint (arXiv, ChemRxiv, bioRxiv, etc.).
-- If it has a DOI, reply with ONLY the DOI (e.g. "10.1234/example").
+
+IMPORTANT: The paper you find must closely match the given title. If the best result has a substantially different title (not just minor differences like capitalization or punctuation), reply "NOT_FOUND" instead.
+
+- If a matching paper has a DOI, reply with ONLY the DOI (e.g. "10.1234/example").
 - If it is an arXiv preprint without a DOI, reply with ONLY the arXiv ID (e.g. "2301.07041" or "arXiv:2301.07041").
-- If you cannot find or confirm the paper exists, reply with exactly "NOT_FOUND".
+- If you cannot find a paper whose title closely matches, reply with exactly "NOT_FOUND".
 No other text.`;
 }
 
